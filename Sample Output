@@ -1,35 +1,36 @@
-_|_|_
-_|_|_
- | | 
 Welcome to Tic Tac Toe!!
-Please make a move. (1-9)
-1
-PlayerO moved at position 1
-O|_|_
+_|_|_
 _|_|_
  | | 
-3
-PlayerX moved at: 3
-O|_|X
-_|_|_
- | | 
-Welcome to Tic Tac Toe!!
 Please make a move. (1-9)
 5
 PlayerO moved at position 5
-O|_|X
+_|_|_
 _|O|_
  | | 
-9
-PlayerX moved at: 9
-O|_|X
+2
+PlayerX moved at: 2
+_|X|_
 _|O|_
- | |X
-Welcome to Tic Tac Toe!!
+ | | 
 Please make a move. (1-9)
-4
-PlayerO moved at position 4
-O|_|X
-O|O|_
- | |X
-6
+1
+PlayerO moved at position 1
+O|X|_
+_|O|_
+ | | 
+3
+PlayerX moved at: 3
+O|X|X
+_|O|_
+ | | 
+Please make a move. (1-9)
+9
+PlayerO moved at position 9
+O|X|X
+_|O|_
+ | |O
+PlayerX Wins
+Player Score: 0
+PlayerX Score: 1
+Would you like to play again? Y/N
