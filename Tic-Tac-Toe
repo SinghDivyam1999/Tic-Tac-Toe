@@ -14,11 +14,12 @@ public class TicTacToe {
 	  
 	 */
 
-	static int playerOScore = 0;
-	static int playerXScore = 0;
-	static Scanner sc = new Scanner(System.in);
+	public static int playerOScore = 0;
+	public static int playerXScore = 0;
+	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		System.out.println("Welcome to Tic Tac Toe!! \nChoose a valid position(1-9)");
 		char[][] gameBoard = { { '_', '|', '_', '|', '_' }, { '_', '|', '_', '|', '_' }, { ' ', '|', ' ', '|', ' ' } };
 		printBoard(gameBoard);
 		boolean gameOver = false;
@@ -26,8 +27,8 @@ public class TicTacToe {
 
 		while (playAgain) {
 			while (!gameOver) {
-				System.out.println("Welcome to Tic Tac Toe!!");
-				playerMove(gameBoard);
+
+				playerOMove(gameBoard);
 				gameOver = isGameOver(gameBoard);
 				if (gameOver) {
 					break;
@@ -39,7 +40,7 @@ public class TicTacToe {
 					break;
 				}
 			}
-			System.out.println("Player Score: " + playerOScore);
+			System.out.println("PlayerO Score: " + playerOScore);
 			System.out.println("PlayerX Score: " + playerXScore);
 			System.out.println("Would you like to play again? Y/N");
 			sc.nextLine();
@@ -49,7 +50,7 @@ public class TicTacToe {
 			case "Y":
 			case "y":
 				playAgain = true;
-				System.out.println("Dope! Let's play again");
+				System.out.println("yeAHeY! Let's play again");
 				resetBoard(gameBoard);
 				gameOver = false;
 				printBoard(gameBoard);
@@ -158,18 +159,21 @@ public class TicTacToe {
 			if (gameboard[0][0] == '_') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 2:
 			if (gameboard[0][2] == '_') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 3:
 			if (gameboard[0][4] == '_') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 
@@ -177,36 +181,42 @@ public class TicTacToe {
 			if (gameboard[1][0] == '_') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 5:
 			if (gameboard[1][2] == '_') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 6:
 			if (gameboard[1][4] == '_') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 7:
 			if (gameboard[2][0] == ' ') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 8:
 			if (gameboard[2][2] == ' ') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 		case 9:
 			if (gameboard[2][4] == ' ') {
 				return true;
 			} else {
+				System.err.println("Invalid move!");
 				return false;
 			}
 
@@ -230,95 +240,109 @@ public class TicTacToe {
 
 	}
 
+	public static void playerOMove(char[][] gameBoard) { // method for player X
+		int move = sc.nextInt();
+		boolean result = isValidMove(move, gameBoard);
+
+		while (!result) {
+
+			move = sc.nextInt();
+			result = isValidMove(move, gameBoard);
+		}
+		System.out.println("PlayerO moved at: " + move);
+		updateBoard(move, 1, gameBoard);
+
+	}
+
 	public static boolean isGameOver(char[][] gameboard) {
 
 		// Horizontal Win
 		if (gameboard[0][0] == 'X' && gameboard[0][2] == 'X' && gameboard[0][4] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[0][0] == 'O' && gameboard[0][2] == 'O' && gameboard[0][4] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 		if (gameboard[1][0] == 'X' && gameboard[1][2] == 'X' && gameboard[1][4] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[1][0] == 'O' && gameboard[1][2] == 'O' && gameboard[1][4] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
-			return true;
-		}
-		if (gameboard[2][0] == 'X' && gameboard[2][2] == 'X' && gameboard[2][4] == 'X') {
 			System.out.println("PlayerO Wins");
 			playerOScore++;
 			return true;
 		}
-		if (gameboard[2][0] == 'O' && gameboard[2][2] == 'O' && gameboard[2][4] == 'O') {
+		if (gameboard[2][0] == 'X' && gameboard[2][2] == 'X' && gameboard[2][4] == 'X') {
 			System.out.println("PlayerX Wins");
 			playerXScore++;
+			return true;
+		}
+		if (gameboard[2][0] == 'O' && gameboard[2][2] == 'O' && gameboard[2][4] == 'O') {
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 
 		// Vertical Wins
 
 		if (gameboard[0][0] == 'X' && gameboard[1][0] == 'X' && gameboard[2][0] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[0][0] == 'O' && gameboard[1][0] == 'O' && gameboard[2][0] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 
 		if (gameboard[0][2] == 'X' && gameboard[1][2] == 'X' && gameboard[2][2] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[0][2] == 'O' && gameboard[1][2] == 'O' && gameboard[2][2] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 
 		if (gameboard[0][4] == 'X' && gameboard[1][4] == 'X' && gameboard[2][4] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[0][4] == 'O' && gameboard[1][4] == 'O' && gameboard[2][4] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 
 		// Diagonal Wins
 		if (gameboard[0][0] == 'X' && gameboard[1][2] == 'X' && gameboard[2][4] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[0][0] == 'O' && gameboard[1][2] == 'O' && gameboard[2][4] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 
 		if (gameboard[2][0] == 'X' && gameboard[1][2] == 'X' && gameboard[0][4] == 'X') {
-			System.out.println("PlayerO Wins");
-			playerOScore++;
+			System.out.println("PlayerX Wins");
+			playerXScore++;
 			return true;
 		}
 		if (gameboard[2][0] == 'O' && gameboard[1][2] == 'O' && gameboard[0][4] == 'O') {
-			System.out.println("PlayerX Wins");
-			playerXScore++;
+			System.out.println("PlayerO Wins");
+			playerOScore++;
 			return true;
 		}
 
